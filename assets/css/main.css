@@ -55,6 +55,10 @@
   --transition-slow: 0.5s ease;
 }
 
+/* ===== DEBUGGING (Remove in production) ===== */
+/* Uncomment the line below to see which elements might be causing overflow */
+/* * { outline: 1px solid red !important; } */
+
 /* ===== BASE STYLES ===== */
 * {
   margin: 0;
@@ -64,6 +68,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 body {
@@ -72,6 +77,9 @@ body {
   background-color: var(--background-color);
   line-height: var(--body-line-height);
   font-size: 16px;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+  max-width: 100vw;
 }
 
 .container {
@@ -79,6 +87,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
+  box-sizing: border-box;
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -129,12 +138,16 @@ img {
 /* ===== LAYOUT ===== */
 section {
   padding: var(--spacing-xxl) 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .section-header {
   text-align: center;
   max-width: 800px;
   margin: 0 auto var(--spacing-xxl);
+  width: 100%;
 }
 
 .section-header p {
@@ -215,6 +228,8 @@ section {
               url('../images/hero-background.png') center/cover;
   color: white;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .hero-content {
@@ -225,6 +240,8 @@ section {
   position: relative;
   z-index: 2;
   text-align: center;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hero h1 {
@@ -295,10 +312,7 @@ section {
 @media (max-width: 768px) {
   .container {
     padding: 0 var(--spacing-md);
-  }
-  
-  .nav-links {
-    display: none;
+    max-width: 100%;
   }
   
   .hero h1 {
@@ -313,6 +327,18 @@ section {
   .cta-button {
     width: 100%;
     max-width: 300px;
+  }
+  
+  /* Ensure no horizontal overflow */
+  .hero {
+    padding: 12rem 0 3rem;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
   }
 }
 

@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DeAgro Digital Nexus - IA, Blockchain e o Futuro das Finanças</title>
     
     <!-- Meta Tags -->
@@ -21,8 +21,12 @@
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/charts.css">
     <link rel="stylesheet" href="assets/css/language-selector.css">
+    <link rel="stylesheet" href="assets/css/mobile-menu.css">
 </head>
 <body>
+    <!-- Top anchor for logo link -->
+    <div id="top"></div>
+    
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
@@ -48,8 +52,8 @@
                     
                     <!-- Language selector in mobile menu -->
                     <div class="language-selector">
-                        <button type="button" onclick="setLanguage('pt')" class="lang-btn active">PT</button>
-                        <button type="button" onclick="setLanguage('en')" class="lang-btn">EN</button>
+                        <button type="button" class="lang-btn active" data-lang="pt">PT</button>
+                        <button type="button" class="lang-btn" data-lang="en">EN</button>
                     </div>
                 </nav>
             </div>
@@ -57,7 +61,7 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main style="width: 100%; max-width: 100vw; overflow-x: hidden;">
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">

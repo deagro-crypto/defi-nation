@@ -2,7 +2,10 @@
  * Initialize application when DOM is loaded
  */
 document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
+    // Small delay to ensure all elements are ready
+    setTimeout(() => {
+        initializeApp();
+    }, 100);
 });
 
 /**
@@ -10,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function initializeApp() {
     initializeHeader();
-    initializeSmoothScroll()
     initializeBlockchainCards();
     initializeScrollAnimations();
     initializeAudioPlayer();
@@ -156,40 +158,86 @@ function initializeAudioPlayer() {
  * Setup event listeners
  */
 function setupEventListeners() {
+    
     // Mobile menu toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navLinks = document.getElementById('navLinks');
     
+    console.log('Setting up mobile menu event listeners:', { mobileMenuToggle, navLinks });
+    
     if (mobileMenuToggle && navLinks) {
-        utils.safeAddEventListener(mobileMenuToggle, 'click', () => {
-            navLinks.classList.toggle('active');
+        
+        // Use direct event listener instead of utils.safeAddEventListener for debugging
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Mobile menu toggle clicked');
             const isOpen = navLinks.classList.contains('active');
-            mobileMenuToggle.textContent = isOpen ? '✕' : '☰';
-            mobileMenuToggle.setAttribute('aria-expanded', isOpen);
-        });
-
-        // Close mobile menu when clicking on a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            utils.safeAddEventListener(link, 'click', () => {
+            console.log('Current menu state - isOpen:', isOpen);
+            console.log('Current navLinks classes:', navLinks.classList.toString());
+            
+            if (isOpen) {
                 navLinks.classList.remove('active');
                 mobileMenuToggle.textContent = '☰';
                 mobileMenuToggle.setAttribute('aria-expanded', 'false');
-            });
+                console.log('Menu closed');
+                console.log('After closing - navLinks classes:', navLinks.classList.toString());
+            } else {
+                navLinks.classList.add('active');
+                mobileMenuToggle.textContent = '✕';
+                mobileMenuToggle.setAttribute('aria-expanded', 'true');
+                // Force visibility
+                navLinks.style.visibility = 'visible';
+                navLinks.style.display = 'flex';
+                navLinks.style.opacity = '1';
+                console.log('Menu opened');
+                console.log('After opening - navLinks classes:', navLinks.classList.toString());
+                console.log('navLinks style.display:', navLinks.style.display);
+                console.log('navLinks style.visibility:', navLinks.style.visibility);
+            }
+        });
+
+        // Close mobile menu when clicking on links or language buttons - use event delegation
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                console.log('Link clicked, closing menu');
+                navLinks.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            } else if (e.target.classList.contains('lang-btn')) {
+                console.log('Language button clicked, closing menu');
+                // Don't close immediately, let setLanguage handle it
+                // The setLanguage function will close the menu
+            }
         });
 
         // Close mobile menu when clicking outside
-        utils.safeAddEventListener(document, 'click', (e) => {
+        document.addEventListener('click', function(e) {
             if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.textContent = '☰';
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+        
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 mobileMenuToggle.textContent = '☰';
                 mobileMenuToggle.setAttribute('aria-expanded', 'false');
             }
         });
+        
+    } else {
+        console.error('Mobile menu elements not found!', { mobileMenuToggle, navLinks });
     }
 
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        utils.safeAddEventListener(anchor, 'click', function (e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
             const target = document.getElementById(targetId);
@@ -207,14 +255,14 @@ function setupEventListeners() {
     const podcastBtn = document.querySelector('[data-i18n="hero_btn_podcast"]');
 
     if (insightsBtn) {
-        utils.safeAddEventListener(insightsBtn, 'click', (e) => {
+        insightsBtn.addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById('insights')?.scrollIntoView({ behavior: 'smooth' });
         });
     }
 
     if (podcastBtn) {
-        utils.safeAddEventListener(podcastBtn, 'click', (e) => {
+        podcastBtn.addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById('podcast')?.scrollIntoView({ behavior: 'smooth' });
         });

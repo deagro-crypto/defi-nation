@@ -251,6 +251,15 @@ function setLanguage(lang) {
         updateTitle();
         updatePlaceholders();
         
+        // Close mobile menu if it's open
+        const navLinks = document.getElementById('navLinks');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        if (navLinks && mobileMenuToggle && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileMenuToggle.textContent = '☰';
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        }
+        
         // Dispatch custom event for other components
         window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
     }
@@ -300,7 +309,7 @@ function initializeI18n() {
     // Set up language selector buttons
     document.querySelectorAll('.language-selector button').forEach(btn => {
         btn.addEventListener('click', () => {
-            const lang = btn.textContent.toLowerCase();
+            const lang = btn.getAttribute('data-lang') || btn.textContent.toLowerCase();
             setLanguage(lang);
             
             // Update active state
@@ -310,7 +319,18 @@ function initializeI18n() {
     });
 
     // Set initial active state
-    const activeBtn = document.querySelector(`.language-selector button:contains("${currentLanguage.toUpperCase()}")`);
+    // Get all buttons within the language-selector
+    const languageButtons = document.querySelectorAll('.language-selector button');
+    
+    // Iterate through the buttons to find the one with the matching text content
+    let activeBtn = null;
+    languageButtons.forEach(button => {
+        const buttonLang = button.getAttribute('data-lang') || button.textContent.trim().toLowerCase();
+        if (buttonLang === currentLanguage) {
+            activeBtn = button;
+        }
+    });
+    
     if (activeBtn) {
         activeBtn.classList.add('active');
     }
