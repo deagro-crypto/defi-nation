@@ -10,7 +10,7 @@
     to {
         opacity: 1;
         transform: translateY(0);
-        max-height: calc(100vh - 140px);
+        max-height: calc(100vh - 80px);
     }
 }
 
@@ -61,7 +61,7 @@
         opacity: 1 !important;
         pointer-events: auto !important;
         position: fixed !important;
-        top: 140px !important;
+        top: 80px !important;
         left: 0 !important;
         right: 0 !important;
         bottom: 0 !important;
@@ -76,7 +76,7 @@
         overflow-x: hidden !important;
         animation: slideDown 0.4s ease-out !important;
         width: 100% !important;
-        height: calc(100vh - 140px) !important;
+        height: calc(100vh - 80px) !important;
     }
 
     /* Ensure header maintains size when menu is active */
@@ -91,15 +91,15 @@
 
     /* Prevent header from changing when menu is active */
     .header:has(.nav-links.active) {
-        height: 140px !important;
-        min-height: 140px !important;
-        max-height: 140px !important;
+        height: 80px !important;
+        min-height: 80px !important;
+        max-height: 80px !important;
     }
 
     .header:has(.nav-links.active) .header-content {
-        height: 140px !important;
-        min-height: 140px !important;
-        max-height: 140px !important;
+        height: 80px !important;
+        min-height: 80px !important;
+        max-height: 80px !important;
     }
 
     /* Mobile menu header with close button - removed to prevent duplication */
@@ -210,22 +210,22 @@
 /* Responsive menu positioning for different screen sizes */
 @media (max-width: 480px) {
     .header .nav-links.active {
-        top: 140px !important;
-        height: calc(100vh - 140px) !important;
+        top: 80px !important;
+        height: calc(100vh - 80px) !important;
     }
 }
 
 @media (max-width: 768px) and (min-width: 481px) {
     .header .nav-links.active {
-        top: 140px !important;
-        height: calc(100vh - 140px) !important;
+        top: 80px !important;
+        height: calc(100vh - 80px) !important;
     }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
     .header .nav-links.active {
-        top: 140px !important;
-        height: calc(100vh - 140px) !important;
+        top: 80px !important;
+        height: calc(100vh - 80px) !important;
     }
 }
 

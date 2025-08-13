@@ -181,33 +181,33 @@ section {
   align-items: center;
 }
 
-/* Mobile header layout - vertical layout with logo on top, button below */
+/* Mobile header layout - horizontal layout with logo and button on same line */
 @media (max-width: 1024px) {
   .header {
-    height: 140px !important;
-    min-height: 140px !important;
-    max-height: 140px !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
   }
   
   .header-content {
-    flex-direction: column;
-    justify-content: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0 1rem 0;
+    gap: 0;
+    padding: 0.5rem 0;
     position: relative;
     z-index: 1004;
-    height: 140px !important;
-    min-height: 140px !important;
-    max-height: 140px !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
   }
   
   .logo-container {
     order: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0;
     z-index: 1004;
     flex-shrink: 0;
     height: auto;
@@ -239,7 +239,7 @@ section {
 }
 
 .logo-img {
-    height: 110px;
+    height: 49.5px;
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -282,7 +282,7 @@ section {
 /* Mobile hero section adjustment */
 @media (max-width: 1024px) {
   .hero {
-    padding: 8rem 0 3rem;
+    padding: 3rem 0 3rem;
   }
 }
 
