@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DeAgro Digital Nexus - IA, Blockchain e o Futuro das Finanças</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Explore a convergência de IA, Blockchain e Criptomoedas no setor financeiro com insights da DeAgro">
+    <meta name="keywords" content="IA, Blockchain, Criptomoedas, Finanças, DeAgro, Agronegócio">
+    <meta name="author" content="DeAgro">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/charts.css">
+    <link rel="stylesheet" href="assets/css/language-selector.css">
+    <link rel="stylesheet" href="assets/css/mobile-menu.css">
+</head>
+<body>
+    <!-- Top anchor for logo link -->
+    <div id="top"></div>
+    
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <a href="#top" class="logo-link">
+                        <img src="assets/images/defi-nation-logo.png" alt="DeFi Nation" class="logo-img">
+                    </a>
+                 </div>
+                
+                <!-- Mobile menu toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    ☰
+                </button>
+                
+                <nav class="nav-links" id="navLinks">
+                    <a href="#ai-role" data-i18n="nav_ai_banking">IA em Banking</a>
+                    <a href="#blockchain-infra" data-i18n="nav_blockchain">Blockchain</a>
+                    <a href="#synergy" data-i18n="nav_synergy">Sinergia</a>
+                    <a href="#regulation" data-i18n="nav_regulation">Regulação</a>
+                    <a href="#podcast" data-i18n="nav_podcast">Podcast</a>
+                    <a href="#insights" data-i18n="nav_insights">Insights</a>
+                    
+                    <!-- Language selector in mobile menu -->
+                    <div class="language-selector">
+                        <button type="button" class="lang-btn active" data-lang="pt">PT</button>
+                        <button type="button" class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="width: 100%; max-width: 100vw; overflow-x: hidden;">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1><span class="highlight" data-i18n="hero_title">O Nexus Digital</span><br><span data-i18n="hero_subtitle">que Transforma Finanças</span></h1>
+                        <p class="hero-subtitle" data-i18n="hero_description">
+                            Explore como IA, Blockchain e Criptomoedas estão convergindo para revolucionar 
+                            o setor financeiro e criar novas oportunidades no agronegócio.
+                        </p>
+                        <div class="hero-cta">
+                            <button class="cta-button primary" onclick="scrollToSection('insights')" data-i18n="hero_btn_insights">
+                                Explorar Insights
+                            </button>
+                            <button class="cta-button secondary" onclick="scrollToSection('podcast')" data-i18n="hero_btn_podcast">
+                                Ouvir Podcast
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Summary -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-i18n="executive_summary_title">Resumo Executivo</h2>
+                    <p data-i18n="executive_summary_text">
+                        A convergência estratégica de IA, blockchain e criptomoedas está impulsionando 
+                        oportunidades sem precedentes para eficiência operacional, engajamento personalizado 
+                        de clientes e gestão robusta de riscos no setor financeiro.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI's Role Section -->
+        <section id="ai-role" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-i18n="ai_banking_title">O Papel Fundamental da IA no Banking Moderno</h2>
+                    <p data-i18n="ai_banking_description">
+                        A IA está transformando fundamentalmente como as instituições financeiras operam, 
+                        desde o fortalecimento da gestão de riscos até a criação de experiências 
+                        hiperpersonalizadas para clientes.
+                    </p>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-wrapper ai-impact-chart">
+                        <div class="chart-header">
+                            <h3 data-i18n="chart_ai_impact_title">Impacto da IA nas Funções Bancárias</h3>
+                            <p class="chart-description" data-i18n="chart_ai_impact_subtitle">
+                                Executivos identificam detecção de fraudes, cibersegurança e KYC/AML 
+                                como áreas onde a IA oferece maior valor de negócio.
+                            </p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="aiImpactChart"></canvas>
+                        </div>
+                        <p class="chart-footer" data-i18n="chart_ai_impact_footer">
+                            Percentual de executivos que acreditam que a IA oferece maior impulso 
+                            ao valor de negócio em funções bancárias críticas.
+                        </p>
+                    </div>
+
+                    <div class="chart-wrapper talent-gap-chart">
+                        <div class="chart-header">
+                            <h3 data-i18n="chart_talent_gap_title">Lacuna de Talentos em IA</h3>
+                            <p class="chart-description" data-i18n="chart_talent_gap_subtitle">
+                                Apesar do impulso para IA, uma deficiência significativa de expertise 
+                                dificulta sua adoção em toda a empresa.
+                            </p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="talentGapChart"></canvas>
+                        </div>
+                        <p class="chart-footer" data-i18n="chart_talent_gap_footer">
+                            Áreas de maior deficiência de expertise identificadas pelos executivos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- AI Scaling Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">63%</div>
+                        <div class="stat-label" data-i18n="stat_stress_testing">Priorizam Testes de Stress</div>
+                        <div class="stat-description" data-i18n="stat_stress_description">Para identificar proativamente fraquezas do modelo antes da implantação</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">48%</div>
+                        <div class="stat-label" data-i18n="stat_real_time">Exigem Controles em Tempo Real</div>
+                        <div class="stat-description" data-i18n="stat_real_time_description">Para monitoramento contínuo e prevenção de "drift" ou "alucinação"</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blockchain Infrastructure Section -->
+        <section id="blockchain-infra" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-i18n="blockchain_title">Blockchain: Remodelando a Infraestrutura Financeira</h2>
+                    <p data-i18n="blockchain_description">
+                        Como um ledger descentralizado e imutável, a tecnologia blockchain fornece 
+                        uma nova base de confiança e eficiência para serviços financeiros essenciais.
+                    </p>
+                </div>
+
+                <div class="blockchain-cards" id="blockchain-use-cases">
+                    <!-- Cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Synergy Section -->
+        <section id="synergy" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-i18n="synergy_title">A Confluência: Uma Sinergia Fundamental</h2>
+                    <p data-i18n="synergy_description">
+                        O verdadeiro poder emerge quando IA e blockchain são integrados. O blockchain 
+                        fornece dados verificáveis e à prova de adulteração que a IA precisa para ser 
+                        confiável e ética, enquanto a IA aprimora a eficiência e segurança do blockchain.
+                    </p>
+                </div>
+
+                <div class="synergy-container">
+                    <div class="synergy-diagram">
+                        <div class="synergy-pillars">
+                            <div class="synergy-pillar">
+                                <div class="synergy-icon ai">AI</div>
+                                <h3 data-i18n="synergy_ai_title">Inteligência Artificial</h3>
+                                <p data-i18n="synergy_ai_description">Fornece inteligência, automação e detecção de padrões em tempo real.</p>
+                            </div>
+                            
+                            <div class="synergy-plus">+</div>
+                            
+                            <div class="synergy-pillar">
+                                <div class="synergy-icon blockchain">B</div>
+                                <h3 data-i18n="synergy_blockchain_title">Blockchain</h3>
+                                <p data-i18n="synergy_blockchain_description">Oferece uma 'camada de confiança' com dados imutáveis, verificáveis e à prova de adulteração.</p>
+                            </div>
+                        </div>
+
+                        <div class="synergy-outcomes">
+                            <h4 data-i18n="synergy_outcomes_title">Principais Resultados Sinérgicos</h4>
+                            <div class="outcomes-grid">
+                                <div class="outcome-item">
+                                    <strong data-i18n="outcome_data_integrity_title">Integridade de Dados para IA:</strong> <span data-i18n="outcome_data_integrity_desc">Garante que modelos de IA sejam treinados com dados precisos e confiáveis.</span>
+                                </div>
+                                <div class="outcome-item">
+                                    <strong data-i18n="outcome_fraud_detection_title">Detecção Aprimorada de Fraudes:</strong> <span data-i18n="outcome_fraud_detection_desc">IA identifica padrões suspeitos em tempo real, enquanto blockchain fornece trilha de auditoria inalterável.</span>
+                                </div>
+                                <div class="outcome-item">
+                                    <strong data-i18n="outcome_autonomous_ops_title">Operações Autônomas:</strong> <span data-i18n="outcome_autonomous_ops_desc">Agentes de IA podem interagir com contratos inteligentes para automatizar tarefas financeiras complexas.</span>
+                                </div>
+                                <div class="outcome-item">
+                                    <strong data-i18n="outcome_immutable_audits_title">Auditorias Imutáveis de IA:</strong> <span data-i18n="outcome_immutable_audits_desc">Cria um registro à prova de adulteração das decisões de IA, crucial para conformidade regulatória.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regulation Section -->
+        <section id="regulation" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-i18n="regulation_title">Navegando o Cenário Regulatório em Evolução</h2>
+                    <p data-i18n="regulation_description">
+                        Reguladores globais estão se movendo da observação para a ação, criando 
+                        frameworks baseados em princípios para equilibrar inovação com estabilidade 
+                        financeira e proteção ao consumidor.
+                    </p>
+                </div>
+
+                <div class="regulatory-grid">
+                    <div class="regulatory-region">
+                        <h4 data-i18n="regulation_us_title">Estados Unidos</h4>
+                        <p data-i18n="regulation_us_description">Momentum bipartidário para supervisão abrangente, especialmente para stablecoins (exigindo respaldo total e conformidade AML/CFT).</p>
+                    </div>
+                    <div class="regulatory-region">
+                        <h4 data-i18n="regulation_europe_title">Europa</h4>
+                        <p data-i18n="regulation_europe_description">Implementação do framework Markets in Crypto-Assets (MiCA) fornece regras claras e harmonizadas para aumentar a confiança institucional.</p>
+                    </div>
+                    <div class="regulatory-region">
+                        <h4 data-i18n="regulation_global_title">Órgãos Globais (FMI, BIS)</h4>
+                        <p data-i18n="regulation_global_description">Foco em avaliar o impacto da IA na estabilidade financeira, experimentando com CBDCs e moldando regulamentações futuras.</p>
+                    </div>
+                    <div class="regulatory-trends">
+                        <h4 data-i18n="regulation_trends_title">Tendências Gerais</h4>
+                        <p data-i18n="regulation_trends_description">Demanda por modelos de IA auditáveis e com mitigação de viés, além de frameworks mais robustos de privacidade de dados.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <!-- Podcast Section -->
+                <section id="podcast" class="section">
+                    <div class="container">
+                         <div class="podcast-section">
+                             <div class="podcast-header">
+                                  <h3 data-i18n="podcast_title">🎧 Podcast: IA, Blockchain e Cripto no Setor Financeiro</h3>
+                                <p data-i18n="podcast_subtitle">Ouça nossa análise completa sobre a confluência que remodela bancos e desafia o futuro.</p>
+                    </div>
+                    
+                    <div class="podcast-player">
+                        <!-- Podcast Language Selector -->
+                        <div class="podcast-language-selector">
+                            <button class="podcast-lang-btn active" data-lang="pt" data-i18n="podcast_lang_pt">🇧🇷 Português</button>
+                            <button class="podcast-lang-btn" data-lang="en" data-i18n="podcast_lang_en">🇺🇸 English</button>
+                        </div>
+                        
+                        <audio controls class="audio-controls" id="podcastAudio">
+                            <source src="assets/media/podcast-pt.mp3" type="audio/mpeg" id="podcastSource">
+                            <source src="assets/media/podcast-pt.mp3" type="audio/mp4">
+                            Seu navegador não suporta o elemento de áudio.
+                        </audio>
+                        
+                        <div class="podcast-info">
+                            <div class="podcast-title" data-i18n="podcast_current_title">A Confluência Que Remodela Bancos e Desafia o Futuro</div>
+                            <div class="podcast-description" data-i18n="podcast_current_description">Uma análise profunda sobre como IA, Blockchain e Criptomoedas estão transformando o setor financeiro e criando novas oportunidades de investimento.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <!-- Gemini Insights Section -->
+        <section id="insights" class="section">
+            <div class="container">
+                <div class="gemini-section">
+                    <div class="gemini-header">
+                        <h3 data-i18n="gemini_title"><span class="gemini-sparkle">✨</span> Insights Powered by Gemini <span class="gemini-sparkle">✨</span></h3>
+                        <p data-i18n="gemini_subtitle">Aproveite a IA para aprofundar sua compreensão e gerar novas ideias.</p>
+                    </div>
+
+                    <div class="gemini-feature">
+                        <h4 data-i18n="gemini_concept_title">Explorador de Conceitos</h4>
+                        <div class="gemini-input-group">
+                            <input type="text" id="conceptInput" class="gemini-input" 
+                                   data-i18n-placeholder="gemini_concept_placeholder">
+                            <button id="explainConceptBtn" class="gemini-button">
+                                <span class="gemini-sparkle">✨</span> <span data-i18n="gemini_explain_btn">Explicar Conceito</span>
+                                <div id="explainSpinner" class="spinner" style="display: none;"></div>
+                            </button>
+                        </div>
+                        <div id="conceptOutput" class="gemini-output">
+                            <p style="color: var(--medium-gray);" data-i18n="gemini_concept_prompt">Digite um conceito acima para obter uma explicação powered by IA.</p>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="gemini-feature">
+                        <h4 data-i18n="gemini_podcast_title">Gerador de Ideias para Podcast</h4>
+                        <button id="generatePodcastIdeasBtn" class="gemini-button">
+                            <span class="gemini-sparkle">✨</span> <span data-i18n="gemini_podcast_btn">Gerar Ideias para Podcast</span>
+                            <div id="podcastSpinner" class="spinner" style="display: none;"></div>
+                        </button>
+                        <div id="podcastOutput" class="gemini-output">
+                            <p style="color: var(--medium-gray);" data-i18n="gemini_podcast_prompt">Clique no botão acima para obter ideias frescas para podcast!</p>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Footer -->
+    <footer class="section" style="background-color: var(--primary-dark); color: white; padding: var(--spacing-xl) 0;">
+        <div class="container">
+            <div style="text-align: center;">
+                <p>&copy; 2025 DeFi Nation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="config/api-config.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/gemini.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/podcast.js"></script>
+</body>
+</html>
+

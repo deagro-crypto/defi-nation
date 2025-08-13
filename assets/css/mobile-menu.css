@@ -1,0 +1,271 @@
+/* Mobile Menu Styles - Clean Implementation */
+
+/* Mobile menu dropdown animation */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: calc(100vh - 140px);
+    }
+}
+
+/* Mobile menu styles - ONLY for mobile devices */
+@media (max-width: 1024px) {
+    /* Mobile menu toggle button - Cleaner design */
+    .mobile-menu-toggle {
+        display: flex !important;
+        position: relative !important;
+        z-index: 1004 !important;
+        background: rgba(0, 0, 0, 0.08) !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        font-size: 1.2rem !important;
+        color: var(--dark-gray) !important;
+        cursor: pointer !important;
+        padding: 0.4rem 0.6rem !important;
+        border-radius: 6px !important;
+        transition: all 0.3s ease !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        margin: 0 !important;
+        margin-bottom: 0.5rem !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .mobile-menu-toggle:hover {
+        background-color: rgba(58, 90, 64, 0.1) !important;
+        color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* Hide desktop navigation on mobile */
+    .nav-links {
+        display: none !important;
+    }
+
+    /* Mobile menu overlay - Cleaner, full-screen design */
+    .header .nav-links.active {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        position: fixed !important;
+        top: 140px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(15px) !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        padding: 1rem 1.5rem !important;
+        z-index: 1002 !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        animation: slideDown 0.4s ease-out !important;
+        width: 100% !important;
+        height: calc(100vh - 140px) !important;
+    }
+
+    /* Ensure header maintains size when menu is active */
+    .header .nav-links.active ~ .header-content,
+    .header .nav-links.active ~ .logo-container,
+    .header .nav-links.active ~ .mobile-menu-toggle {
+        height: auto !important;
+        width: auto !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* Prevent header from changing when menu is active */
+    .header:has(.nav-links.active) {
+        height: 140px !important;
+        min-height: 140px !important;
+        max-height: 140px !important;
+    }
+
+    .header:has(.nav-links.active) .header-content {
+        height: 140px !important;
+        min-height: 140px !important;
+        max-height: 140px !important;
+    }
+
+    /* Mobile menu header with close button - removed to prevent duplication */
+
+    /* Mobile menu navigation links - Clean list style */
+    .header .nav-links.active a {
+        padding: 1rem 0 !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 300px !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease !important;
+        margin: 0 !important;
+        color: var(--dark-gray) !important;
+        text-decoration: none !important;
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        line-height: 1.4 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+    }
+
+    .header .nav-links.active a:hover {
+        color: var(--primary-color) !important;
+        background-color: rgba(58, 90, 64, 0.05) !important;
+        transform: translateY(-1px) !important;
+        border-bottom-color: var(--primary-color) !important;
+    }
+
+    .header .nav-links.active a:last-child {
+        border-bottom: none !important;
+    }
+
+    /* Mobile menu language selector - Cleaner design */
+    .header .nav-links.active .language-selector {
+        margin: 2rem 0 0 0 !important;
+        justify-content: center !important;
+        padding: 1.5rem 0 !important;
+        border-top: 2px solid rgba(0, 0, 0, 0.08) !important;
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    .header .nav-links.active .language-selector .lang-btn {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        border-radius: 6px !important;
+        transition: all 0.3s ease !important;
+        margin: 0 0.5rem !important;
+        min-height: 40px !important;
+        min-width: 60px !important;
+        border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        background: white !important;
+        color: var(--dark-gray) !important;
+    }
+
+    .header .nav-links.active .language-selector .lang-btn:hover,
+    .header .nav-links.active .language-selector .lang-btn.active {
+        background: var(--primary-color) !important;
+        color: white !important;
+        border-color: var(--primary-color) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(58, 90, 64, 0.2) !important;
+    }
+
+    /* Ensure logo stays visible and clickable */
+    .header .logo-container,
+    .header .logo-img {
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 1004 !important;
+        position: relative !important;
+        height: auto !important;
+        width: auto !important;
+    }
+
+    .header .logo-link {
+        z-index: 1004 !important;
+        pointer-events: auto !important;
+        position: relative !important;
+        height: auto !important;
+        width: auto !important;
+    }
+
+    /* Responsive logo styling to maintain aspect ratio */
+    .header .logo-img {
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        aspect-ratio: auto !important;
+    }
+
+    .header .logo-container {
+        display: flex !important;
+        align-items: center !important;
+        max-width: 200px !important;
+        min-width: 120px !important;
+    }
+
+    /* Header content layout handled in main.css */
+}
+
+/* Responsive menu positioning for different screen sizes */
+@media (max-width: 480px) {
+    .header .nav-links.active {
+        top: 140px !important;
+        height: calc(100vh - 140px) !important;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .header .nav-links.active {
+        top: 140px !important;
+        height: calc(100vh - 140px) !important;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .header .nav-links.active {
+        top: 140px !important;
+        height: calc(100vh - 140px) !important;
+    }
+}
+
+/* Hide mobile menu toggle on desktop */
+@media (min-width: 1025px) {
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+}
+
+/* Responsive logo sizing for different screen sizes */
+@media (max-width: 480px) {
+    .header .logo-container {
+        max-width: 200px !important;
+        min-width: 160px !important;
+    }
+    
+    .header .logo-img {
+        max-height: 70px !important;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 481px) {
+    .header .logo-container {
+        max-width: 250px !important;
+        min-width: 200px !important;
+    }
+    
+    .header .logo-img {
+        max-height: 85px !important;
+    }
+}
+
+@media (min-width: 1025px) {
+    .header .logo-container {
+        max-width: 280px !important;
+        min-width: 200px !important;
+    }
+    
+    .header .logo-img {
+        max-height: 80px !important;
+    }
+}
