@@ -236,26 +236,26 @@
     }
 }
 
-/* Responsive logo sizing for different screen sizes */
+    /* Responsive logo sizing for different screen sizes */
 @media (max-width: 480px) {
     .header .logo-container {
-        max-width: 200px !important;
-        min-width: 160px !important;
+        max-width: 120px !important;
+        min-width: 96px !important;
     }
     
     .header .logo-img {
-        max-height: 70px !important;
+        max-height: 42px !important;
     }
 }
 
 @media (max-width: 1024px) and (min-width: 481px) {
     .header .logo-container {
-        max-width: 250px !important;
-        min-width: 200px !important;
+        max-width: 150px !important;
+        min-width: 120px !important;
     }
     
     .header .logo-img {
-        max-height: 85px !important;
+        max-height: 51px !important;
     }
 }
 
