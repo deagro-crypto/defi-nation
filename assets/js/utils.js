@@ -119,13 +119,20 @@ function hideLoading(element) {
  */
 function formatText(text) {
     if (!text) return '';
-    
-    return text
+
+    // Apply basic markdown-style formatting
+    let formatted = text
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/\n/g, '<br>')
-        .replace(/- (.*?)(?=\n|$)/g, '<li>$1</li>')
-        .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+        .replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+    // Convert lines starting with '-' into list items
+    formatted = formatted.replace(/^\s*-\s+(.*)$/gm, '<li>$1</li>');
+
+    // Wrap consecutive list items in unordered lists
+    formatted = formatted.replace(/(?:<li>.*?<\/li>\n?)+/g, match => `<ul>${match.replace(/\n/g, '')}</ul>`);
+
+    // Replace remaining newlines with line breaks
+    return formatted.replace(/\n/g, '<br>');
 }
 
 /**
