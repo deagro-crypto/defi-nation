@@ -312,17 +312,20 @@ function initializeI18n() {
             const lang = btn.getAttribute('data-lang') || btn.textContent.toLowerCase();
             setLanguage(lang);
             
-            // Update active state
+            // Update active state - remove from all buttons first
             document.querySelectorAll('.language-selector button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         });
     });
 
     // Set initial active state
-    // Get all buttons within the language-selector
-    const languageButtons = document.querySelectorAll('.language-selector button');
+    // First, remove active class from all buttons
+    document.querySelectorAll('.language-selector button').forEach(btn => {
+        btn.classList.remove('active');
+    });
     
-    // Iterate through the buttons to find the one with the matching text content
+    // Then add active class to the current language button
+    const languageButtons = document.querySelectorAll('.language-selector button');
     let activeBtn = null;
     languageButtons.forEach(button => {
         const buttonLang = button.getAttribute('data-lang') || button.textContent.trim().toLowerCase();
